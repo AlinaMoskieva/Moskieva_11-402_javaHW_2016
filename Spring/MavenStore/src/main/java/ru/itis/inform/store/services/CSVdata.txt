@@ -1,0 +1,14 @@
+item0,cost0
+item1,cost1
+item2,cost2
+item3,cost3
+item4,cost4
+item5,cost5
+item6,cost6
+item7,cost7
+item8,cost8
+item9,cost9
+item10,cost10
+item11,cost11
+item12,cost12
+item13,cost12
