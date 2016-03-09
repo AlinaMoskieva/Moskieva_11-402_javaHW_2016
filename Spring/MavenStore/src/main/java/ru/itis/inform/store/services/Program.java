@@ -10,32 +10,50 @@ import ru.itis.inform.store.dao.models.Item;
 
 public class Program {
     public static void main(String[] args) {
-      /*
+
        //Для propeties-файла
         ItemsDaoInput itemsDaoInput =
                 ItemSupportFactory.getInstance().getInput();
         ItemsDao itemsDaoOutput =
                  ItemSupportFactory.getInstance().getOutput();
-        itemsDaoInput.read();
+        itemsDaoOutput.setItemsDaoInput(itemsDaoInput);
+
+        StoreService storeService = StoreServiceSupportFactory.getInstance().getService();
+        if (itemsDaoInput == null)
+            System.out.println("itemDaoInput is null in main");
+
+        itemsDaoOutput.setItemsDaoInput(itemsDaoInput);
+        storeService.setItemsDao(itemsDaoOutput);
+
+        System.out.println("itemDaoOutput "+ itemsDaoOutput.select("item0"));
+        System.out.println("store service "+ storeService.isExist("item0"));
+
+        /* itemsDaoInput.read();
         itemsDaoOutput.setItemsDaoInput( itemsDaoInput);
         Item item = new Item();
         item = itemsDaoOutput.select("item0");
         if (item!= null){
         System.out.println("Win!"+ item.getDescription()+"  "+item.getName());}
-        else System.out.println("PAIN");*/
+        else System.out.println("PAIN");
         //Spring
-        ApplicationContext context =
+
+       /* ApplicationContext context =
                 new ClassPathXmlApplicationContext("app-context.xml");
 
         ItemsDao itemsDaoOutput =
                 context.getBean("output", ItemsDao.class);
         ItemsDaoInput itemsDaoInput = context.getBean("input", ItemsDaoInput.class);
-        itemsDaoInput.read();
+        itemsDaoInput.read();*/
 
-        Item item =  itemsDaoOutput.select("item0");
-        if (item!= null){
-            System.out.println("Win!"+ item.getDescription()+"  "+item.getName());}
-        else System.out.println("PAIN");
+/*
+        //new version
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("app-context.xml");
+        StoreService service = (StoreService) context.getBean("service");
+
+        System.out.println(service.isExist("item"));
+        System.out.println(service.isExist("item0"));
+        System.out.println(service.isExist("item1"));*/
 
     }
 }

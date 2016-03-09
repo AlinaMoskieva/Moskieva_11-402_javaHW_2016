@@ -26,7 +26,8 @@ public class StoreServiceImplTest {
         // Делаем stubbing на удаление товара с именем Tovar
         doNothing().when(itemsDao).delete("Tovar");
 
-        testedStoreService = new StoreServiceImpl(itemsDao);
+        testedStoreService = new StoreServiceImpl();
+        testedStoreService.setItemsDao(itemsDao);
     }
 
     // Проверяем, корректно ли прошло выполнение метода buy при входном значении Tovar

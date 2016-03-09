@@ -12,7 +12,7 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
 
     public void delete(String itemName) {
         if(input!= null){
-            getData(data);
+            getData();
             for (int i=0; i< data.size();i++){
                 if (data.get(i).getName().equals(itemName)) {
                     data.remove(i);
@@ -26,7 +26,7 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
             }
         }else throw new RuntimeException();
     }
-    public void getData(ArrayList<Item> data){
+    public void getData(){
         this.data = input.getData();
     }
 
@@ -37,9 +37,10 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
      */
     public Item select(String itemName) {
         System.out.println("in select");
+        input.read();
         if (input != null){
             System.out.println("input exist");
-            getData(data);
+            getData();
             int index=-1;
             for (int i =0; i < data.size(); i++){
                 if(data.get(i).getName().equals(itemName)){

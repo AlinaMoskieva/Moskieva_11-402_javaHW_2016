@@ -8,11 +8,11 @@ import java.io.FileNotFoundException;
 
 public class StoreServiceImpl implements StoreService {
 
-    ItemsDao itemsDao;
+    private ItemsDao itemsDao;
     private static final Logger log = Logger.getLogger(StoreServiceImpl.class);
 
-    public StoreServiceImpl(ItemsDao itemsDao) {
-        this.itemsDao = itemsDao;
+    public StoreServiceImpl() {
+
     }
 
     public void buy(String itemName) {
@@ -23,9 +23,16 @@ public class StoreServiceImpl implements StoreService {
     public boolean isExist(String itemName) {
 
         log.info(itemName+ " was select");
+        if(itemsDao == null)
+            System.out.println("item null");
         return itemsDao.select(itemName) != null;
     }
 
+    public void setItemsDao(ItemsDao input) {
+        this.itemsDao = input;
+        if (itemsDao == null)
+        System.out.println("set not work");
+    }
 
 
 }

@@ -25,6 +25,7 @@ public class ItemsDaoCsvImpl implements ItemsDaoInput {
             try {
                 BufferedReader in = new BufferedReader(new FileReader( file.getAbsoluteFile()));
                 try {
+                    System.out.println("in try");
                     String s;
                     while ((s = in.readLine()) != null) {
                         Item item =new Item();

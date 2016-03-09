@@ -2,6 +2,7 @@ package ru.itis.inform.store.dao;
 
 
 import ru.itis.inform.store.dao.models.Item;
+import ru.itis.inform.store.services.StoreService;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -26,7 +27,7 @@ public class ItemSupportFactory {
             String ItemsDaoInputClass = properties.getProperty("input.class");
             String ItemsDaoClass = properties.getProperty("output.class");
 
-           this.input = (ItemsDaoInput) Class.forName(ItemsDaoInputClass).newInstance();
+            this.input = (ItemsDaoInput) Class.forName(ItemsDaoInputClass).newInstance();
             this.output = (ItemsDao) Class.forName(ItemsDaoClass).newInstance();
         } catch (Exception ex) {
             throw new IllegalArgumentException(ex);
