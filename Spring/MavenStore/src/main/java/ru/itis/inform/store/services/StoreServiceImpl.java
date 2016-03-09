@@ -10,9 +10,9 @@ public class StoreServiceImpl implements StoreService {
 
     private ItemsDao itemsDao;
     private static final Logger log = Logger.getLogger(StoreServiceImpl.class);
-
-    public StoreServiceImpl() {
-
+// for Spring
+    public StoreServiceImpl(ItemsDao itemsDao) {
+        this.itemsDao = itemsDao;
     }
 
     public void buy(String itemName) {
@@ -27,7 +27,7 @@ public class StoreServiceImpl implements StoreService {
             System.out.println("item null");
         return itemsDao.select(itemName) != null;
     }
-
+//for properties
     public void setItemsDao(ItemsDao input) {
         this.itemsDao = input;
         if (itemsDao == null)

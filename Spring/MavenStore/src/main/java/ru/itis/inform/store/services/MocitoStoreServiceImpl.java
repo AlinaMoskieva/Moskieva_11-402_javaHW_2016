@@ -10,7 +10,7 @@ public class MocitoStoreServiceImpl {
 
     public static void myMockito() {
         ItemsDaoFileBasedImpl idfi = mock(ItemsDaoFileBasedImpl.class);
-        StoreServiceImpl ser = new StoreServiceImpl();
+        StoreServiceImpl ser = new StoreServiceImpl(idfi);
         ser.setItemsDao(idfi);
 
         Item item = new Item();

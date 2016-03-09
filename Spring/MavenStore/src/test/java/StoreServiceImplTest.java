@@ -26,7 +26,7 @@ public class StoreServiceImplTest {
         // Делаем stubbing на удаление товара с именем Tovar
         doNothing().when(itemsDao).delete("Tovar");
 
-        testedStoreService = new StoreServiceImpl();
+        testedStoreService = new StoreServiceImpl(itemsDao);
         testedStoreService.setItemsDao(itemsDao);
     }
 
