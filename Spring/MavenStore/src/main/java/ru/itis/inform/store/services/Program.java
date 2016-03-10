@@ -14,7 +14,9 @@ public class Program {
                 //Spring Annotation
         ApplicationContext ctx =
                 new AnnotationConfigApplicationContext(ServicesConfig.class);
-        StoreService storeService = (StoreService) ctx.getBean("service");
+        StoreService storeService = (StoreService) ctx.getBean("getService");
+        ItemsDao itemDao = (ItemsDao )ctx.getBean("getOutput");
+        storeService.setItemsDao(itemDao);
         System.out.println( "Answer from store service:    " + storeService.isExist("item0"));
 
 

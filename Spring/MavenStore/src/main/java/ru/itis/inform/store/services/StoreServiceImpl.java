@@ -11,9 +11,6 @@ public class StoreServiceImpl implements StoreService {
     private ItemsDao itemsDao;
     private static final Logger log = Logger.getLogger(StoreServiceImpl.class);
 // for Spring
-    public StoreServiceImpl(ItemsDao itemsDao) {
-        this.itemsDao = itemsDao;
-    }
 
     public void buy(String itemName) {
         itemsDao.delete(itemName);

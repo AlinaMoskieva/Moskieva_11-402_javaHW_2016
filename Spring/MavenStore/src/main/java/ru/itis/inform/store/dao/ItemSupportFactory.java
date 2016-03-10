@@ -16,6 +16,7 @@ public class ItemSupportFactory {
 
     private ItemsDao output;
     private ItemsDaoInput input;
+    private StoreService store;
 
     private ItemSupportFactory() {
         properties = new Properties();
@@ -26,9 +27,11 @@ public class ItemSupportFactory {
 
             String ItemsDaoInputClass = properties.getProperty("input.class");
             String ItemsDaoClass = properties.getProperty("output.class");
+            String StoreServiceClass = properties.getProperty("service.class");
 
             this.input = (ItemsDaoInput) Class.forName(ItemsDaoInputClass).newInstance();
             this.output = (ItemsDao) Class.forName(ItemsDaoClass).newInstance();
+            this.store = (StoreService) Class.forName(StoreServiceClass).newInstance();
         } catch (Exception ex) {
             throw new IllegalArgumentException(ex);
         }

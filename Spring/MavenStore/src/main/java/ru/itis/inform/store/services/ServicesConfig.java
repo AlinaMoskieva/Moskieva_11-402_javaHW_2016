@@ -12,8 +12,8 @@ import ru.itis.inform.store.dao.*;
 public class ServicesConfig {
 
     @Bean
-    public StoreService service(){
-        return new StoreServiceImpl(DaoConfig.output());
+    public StoreService getService(){
+        return new StoreServiceImpl();
     }
 
 }

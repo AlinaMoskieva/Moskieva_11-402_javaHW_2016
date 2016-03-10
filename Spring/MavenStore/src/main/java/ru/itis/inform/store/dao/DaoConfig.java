@@ -6,15 +6,21 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DaoConfig {
+
     @Bean
-    public static ItemsDao output(){
+    public ItemsDao getOutput(){
         ItemsDao itemsDao = new ItemsDaoFileBasedImpl();
-        itemsDao.setItemsDaoInput(input());
+        itemsDao.setItemsDaoInput(getCsv());
         return itemsDao;
     }
 
     @Bean
-    public static ItemsDaoInput input(){
+    public ItemsDaoInput getCsv(){
         return new ItemsDaoCsvImpl();
     }
+    @Bean
+    public ItemsDaoInput getTsv(){
+        return new ItemsDaoTsvImpl();
+    }
+
 }
