@@ -1,12 +1,17 @@
 package ru.itis.inform.store.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import ru.itis.inform.store.dao.models.Item;
 import java.util.ArrayList;
+
 
 
 public class ItemsDaoFileBasedImpl implements ItemsDao{
 
     private  ArrayList<Item> data = new ArrayList<Item>();
+    @Autowired
+    @Qualifier("Csv")
     private ItemsDaoInput input;
 
 
@@ -50,15 +55,6 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
                 return data.get(index);}
         else throw new RuntimeException();
     }
-
-    public void setItemsDaoInput(ItemsDaoInput input) {
-        this.input = input;
-    }
-
-    public ItemsDaoInput getItemsDaoInput() {
-        return input;
-    }
-
 
 }
 

@@ -27,8 +27,7 @@ public class StoreServiceImplTest {
         doNothing().when(itemsDao).delete("Tovar");
 
         testedStoreService = new StoreServiceImpl();
-        testedStoreService.setItemsDao(itemsDao);
-        testedStoreService.setItemsDao(itemsDao);
+
     }
 
     // Проверяем, корректно ли прошло выполнение метода buy при входном значении Tovar

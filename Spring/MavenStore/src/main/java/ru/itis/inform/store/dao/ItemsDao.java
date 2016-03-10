@@ -16,9 +16,7 @@ public interface ItemsDao {
      */
     Item select(String itemName);
 
-    void setItemsDaoInput (ItemsDaoInput input);
 
-    ItemsDaoInput getItemsDaoInput ();
 
 
 }

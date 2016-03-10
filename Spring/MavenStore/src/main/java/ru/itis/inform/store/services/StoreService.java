@@ -17,5 +17,5 @@ public interface StoreService {
      * false - в противном случае
      */
     boolean isExist(String itemName);
-    void setItemsDao (ItemsDao input);
+
 }
