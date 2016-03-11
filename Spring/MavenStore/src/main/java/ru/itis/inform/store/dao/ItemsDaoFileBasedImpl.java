@@ -2,11 +2,12 @@ package ru.itis.inform.store.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import ru.itis.inform.store.dao.models.Item;
 import java.util.ArrayList;
 
 
-
+@Component
 public class ItemsDaoFileBasedImpl implements ItemsDao{
 
     private  ArrayList<Item> data = new ArrayList<Item>();

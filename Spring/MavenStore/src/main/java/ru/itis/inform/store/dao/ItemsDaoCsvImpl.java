@@ -1,13 +1,16 @@
 package ru.itis.inform.store.dao;
 
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import ru.itis.inform.store.dao.models.Item;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-
-
+@ComponentScan("ru.itis.inform.store") //search the ru.itis.inform.store" package for @Component classes
+@Component //Annotate to indicate this is class is an auto scan component.
 public class ItemsDaoCsvImpl implements ItemsDaoInput {
     private String csvfileName;
     private ArrayList<Item> data;

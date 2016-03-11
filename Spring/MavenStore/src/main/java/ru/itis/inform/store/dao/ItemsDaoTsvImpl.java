@@ -1,12 +1,12 @@
 package ru.itis.inform.store.dao;
 
 
+import org.springframework.stereotype.Component;
 import ru.itis.inform.store.dao.models.Item;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-
 public class ItemsDaoTsvImpl implements ItemsDaoInput {
     private String tsvfileName;
     private ArrayList<Item> data;
