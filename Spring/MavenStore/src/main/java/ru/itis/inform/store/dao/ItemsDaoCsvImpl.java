@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-@ComponentScan("ru.itis.inform.store") //search the ru.itis.inform.store" package for @Component classes
+ //search the ru.itis.inform.store" package for @Component classes
 @Component //Annotate to indicate this is class is an auto scan component.
 public class ItemsDaoCsvImpl implements ItemsDaoInput {
     private String csvfileName;

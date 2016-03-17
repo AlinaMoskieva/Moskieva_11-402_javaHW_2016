@@ -15,7 +15,7 @@ public class Program {
         ApplicationContext ctx =
                 new AnnotationConfigApplicationContext(ServicesConfig.class);
         StoreService storeService = (StoreService) ctx.getBean(StoreServiceImpl.class);
-        System.out.println( "Answer from store service:    " + storeService.isExist("item1"));
+        System.out.println( "Answer from store service:    " + storeService.isExist("item0"));
 
 
 
