@@ -1,7 +1,5 @@
 package ru.itis.inform.store.dao;
 
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import ru.itis.inform.store.dao.models.Item;
 
@@ -13,10 +11,10 @@ import java.util.StringTokenizer;
 @Component //Annotate to indicate this is class is an auto scan component.
 public class ItemsDaoCsvImpl implements ItemsDaoInput {
     private String csvfileName;
-    private ArrayList<Item> data;
+    private List<Item> data;
 
     public ItemsDaoCsvImpl(){
-        csvfileName = "/Users/Moskieva/IdeaProjects/JavaHomeWorks/Spring/MavenStore/src/main/java/ru/itis/inform/store/services/CSVdata.txt";
+        csvfileName = "/Users/Moskieva/IdeaProjects/JavaHomeWorks/Spring/MavenStore/src/main/java/ru/itis/inform/store/services/files/CSVdata.txt";
         data = new ArrayList<Item>();
     }
 
@@ -30,12 +28,15 @@ public class ItemsDaoCsvImpl implements ItemsDaoInput {
                 try {
                     System.out.println("in try");
                     String s;
+                    int id = -1;
                     while ((s = in.readLine()) != null) {
-                        Item item =new Item();
+                        id++;
+                        Item item = new Item();
                         StringTokenizer st = new StringTokenizer(s, ",");
+                        item.setId(id);
                         item.setName(st.nextToken());
-                        item.setDescription(s.replace(item.getName(),"").trim());
-                        System.out.println("read:  "+item.getName()+item.getDescription());
+                        item.setCoast(s.replace(item.getName(), "").trim());
+                        System.out.println("read:  " + item.getName() + item.getCoast());
                         data.add(item);
                     }
                 } finally {
@@ -68,17 +69,17 @@ public class ItemsDaoCsvImpl implements ItemsDaoInput {
 
     }
 
-    public void update(ArrayList<Item> data) {
+    public void update(List<Item> data) {
         File file = new File(csvfileName);
         Item item = new Item();
         if ( file.exists()){
             for ( int i=1; i< data.size(); i++)
                 item = data.get(i);
-            write(item.getName()+","+item.getDescription());
+            write(item.getName()+","+item.getCoast());
         }
 
     }
-    public ArrayList<Item> getData (){
+    public List<Item> getData (){
         return data;
     }
 }

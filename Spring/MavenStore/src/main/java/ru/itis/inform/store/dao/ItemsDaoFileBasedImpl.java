@@ -5,18 +5,20 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import ru.itis.inform.store.dao.models.Item;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Component
 public class ItemsDaoFileBasedImpl implements ItemsDao{
 
-    private  ArrayList<Item> data = new ArrayList<Item>();
+    private  List<Item> data = new ArrayList<Item>();
     @Autowired
-    @Qualifier("Csv")
     private ItemsDaoInput input;
 
 
-    public void delete(String itemName) {
+
+
+    public void deleteItem(String itemName) {
         if(input!= null){
             getData();
             for (int i=0; i< data.size();i++){
@@ -32,6 +34,10 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
             }
         }else throw new RuntimeException();
     }
+
+    /**
+     * производится чтение с файла
+     */
     public void getData(){
         this.data = input.getData();
     }
@@ -41,11 +47,11 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
      * @param itemName
      * @return
      */
-    public Item select(String itemName) {
-        System.out.println("in select");
+    public Item selectItemByName(String itemName) {
+        System.out.println("in selectItemByName");
         input.read();
         if (input != null){
-            System.out.println("input exist");
+            System.out.println("input  exist");
             getData();
             int index=-1;
             for (int i =0; i < data.size(); i++){
@@ -55,6 +61,44 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
             else
                 return data.get(index);}
         else throw new RuntimeException();
+    }
+
+
+    public List<Item> getItems() {
+        getData();
+        return data;
+    }
+
+
+    public Item selectItemById(int id) {
+        System.out.println("in selectItemById");
+        input.read();
+        if (input != null){
+            System.out.println("input is exist");
+            getData();
+            int index=-1;
+            for (int i =0; i < data.size(); i++){
+                if(data.get(i).getId() == id){
+                    index=i;}}
+            if(index == -1 ) return null;
+            else
+                return data.get(index);}
+        else throw new RuntimeException();
+    }
+
+
+    public void addItem(Item item) {
+        input.read();
+        if (input!= null){
+            getData();
+            data.add(item);
+            try {
+                input.update(data);
+            } catch (Exception e){
+                System.out.println("Oops .. I'm in addItem");
+            }
+        }else  throw new RuntimeException("Input isn't exist");
+
     }
 
 }
@@ -76,7 +120,7 @@ public class ItemsDaoFileBasedImpl implements ItemsDao{
                         Item item =new Item();
                         StringTokenizer st = new StringTokenizer(s, " ");
                         item.setName(st.nextToken());
-                        item.setDescription(s.replace(item.getName(),"").trim());
+                        item.setCoast(s.replace(item.getName(),"").trim());
                         data.add(item);
                     }
                 } finally {

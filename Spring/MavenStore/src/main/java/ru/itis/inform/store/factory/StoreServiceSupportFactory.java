@@ -1,4 +1,6 @@
-package ru.itis.inform.store.services;
+package ru.itis.inform.store.factory;
+
+import ru.itis.inform.store.services.StoreService;
 
 import java.io.FileInputStream;
 import java.util.Properties;

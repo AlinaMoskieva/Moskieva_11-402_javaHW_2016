@@ -1,15 +1,15 @@
 package ru.itis.inform.store.dao;
 
 
-import org.springframework.stereotype.Component;
 import ru.itis.inform.store.dao.models.Item;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 public class ItemsDaoTsvImpl implements ItemsDaoInput {
     private String tsvfileName;
-    private ArrayList<Item> data;
+    private List<Item> data;
 
     public ItemsDaoTsvImpl(){
         tsvfileName = "/Users/Moskieva/IdeaProjects/JavaHomeWorks/Spring/MavenStore/src/main/java/ru/itis/inform/store/services/TCVdata.txt";
@@ -24,11 +24,14 @@ public class ItemsDaoTsvImpl implements ItemsDaoInput {
                 BufferedReader in = new BufferedReader(new FileReader( file.getAbsoluteFile()));
                 try {
                     String s;
+                    int id = -1;
                     while ((s = in.readLine()) != null) {
+                        id++;
                         Item item =new Item();
                         StringTokenizer st = new StringTokenizer(s, " ");
+                        item.setId(id);
                         item.setName(st.nextToken());
-                        item.setDescription(s.replace(item.getName(),"").trim());
+                        item.setCoast(s.replace(item.getName(),"").trim());
                         data.add(item);
                     }
                 } finally {
@@ -62,17 +65,17 @@ public class ItemsDaoTsvImpl implements ItemsDaoInput {
 
     }
 
-    public void update(ArrayList<Item> data) {
+    public void update(List<Item> data) {
         File file = new File(tsvfileName);
         Item item = new Item();
         if ( file.exists()){
             for ( int i=1; i< data.size(); i++)
                 item = data.get(i);
-            write(item.getName()+" "+item.getDescription());
+            write(item.getName()+" "+item.getCoast());
         }
 
     }
-    public ArrayList<Item> getData (){
+    public List<Item> getData (){
         return data;
     }
 }

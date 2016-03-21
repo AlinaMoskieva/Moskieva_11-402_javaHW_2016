@@ -1,23 +1,24 @@
-package ru.itis.inform.store.services;
+package ru.itis.inform.store;
 
 import ru.itis.inform.store.dao.ItemsDaoFileBasedImpl;
 import ru.itis.inform.store.dao.models.Item;
-import java.io.FileNotFoundException;
+import ru.itis.inform.store.services.StoreServiceImpl;
+
 import static org.mockito.Mockito.*;
 
 
 public class MocitoStoreServiceImpl {
 
     public static void myMockito() {
-        ItemsDaoFileBasedImpl idfi = mock(ItemsDaoFileBasedImpl.class);
+      /*  ItemsDaoFileBasedImpl idfi = mock(ItemsDaoFileBasedImpl.class);
         StoreServiceImpl ser = new StoreServiceImpl();
 
 
         Item item = new Item();
-        item.setDescription(" description");
+        item.setCoast(" description");
         item.setName("it ");
-        when( idfi.select("it")).thenReturn(item);
-        System.out.println("ItemsDaoFileBasedImpl mock  " + idfi.select("it"));
+        when( idfi.selectItemByName("it")).thenReturn(item);
+        System.out.println("ItemsDaoFileBasedImpl mock  " + idfi.selectItemByName("it"));
 
         StoreServiceImpl ssimp = mock(StoreServiceImpl.class);
         when(ssimp.isExist("Item")).thenReturn(true);
@@ -32,7 +33,7 @@ public class MocitoStoreServiceImpl {
         StoreServiceImpl ssimp = new StoreServiceImpl(idfi);
         idfi.read();
         myMockito();
-        System.out.println("test ItemsDaoFileImpl  " + idfi.select("it"));
+        System.out.println("test ItemsDaoFileImpl  " + idfi.selectItemByName("it"));
         System.out.println("test StoreService "+ ssimp.isExist("Item"));
         ssimp.buy("товар");
 
@@ -40,4 +41,5 @@ public class MocitoStoreServiceImpl {
 
 
     }*/
+    }
 }
